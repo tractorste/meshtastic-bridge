@@ -377,6 +377,8 @@ class OwntracksPlugin(Plugin):
             message["lat"] = packet["payload"]["latitude_i"]/10000000
             message["lon"] = packet["payload"]["longitude_i"]/10000000
             message["tst"] = packet["timestamp"]
+            # Hard code an accuracy of 10m so that Home Assistant will accept the device
+            message["acc"] = 10
             if ("time" in packet["payload"]):
                 message["created_at"] = packet["payload"]["time"]
             else:
